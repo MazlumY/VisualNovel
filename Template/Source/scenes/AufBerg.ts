@@ -4,7 +4,7 @@ namespace Endabgabe {
         let text = {
             Narrator: {
               // MIT ENTERHAKEN  
-              T0000: "Alter war das ein steiler Berg.",
+              T0000: "Das war gerade echt schwer hier hoch zu kommen.",
               T0001: "Zum glück hatte ich den Enterhaken dabei.",           
               // MIT STEINSCHLEUDER
               T0002: "Das waren aber viele Treppen. Jetzt bin ich echt erschöpft.",
