@@ -13,6 +13,7 @@ declare namespace FudgeStory {
         private static graph;
         private static size;
         static getGraph(): ƒ.Node;
+        static getViewport(): ƒ.Viewport;
         /**
          * Will be called once by {@link Progress} before anything else may happen.
          */
@@ -263,6 +264,7 @@ declare namespace FudgeStory {
      * Pass values in percent relative to the upper left corner.
      */
     function positionPercent(_x: number, _y: number): Position;
+    function pointCanvasToMiddleGround(_point: ƒ.Vector2): ƒ.Vector3;
 }
 declare namespace FudgeStory {
     /**
@@ -436,6 +438,7 @@ declare namespace FudgeStory {
          *
          */
         static defineSignal(_promiseFactoriesOrEventTypes: (Function | EVENT)[]): Signal;
+        static createEventPromise(_target: EventTarget, _eventType: string): Promise<Event>;
         /**
          * Wait for the given amount of time in seconds to pass
          */
@@ -462,6 +465,8 @@ declare namespace FudgeStory {
         private loop;
         private fadingToVolume;
         private constructor();
+        static getSound(_url: RequestInfo): boolean;
+        static isPlaying(_url: RequestInfo): Sound;
         /**
          * Plays the audiofile defined by the given url with the given volume and loops it, if desired
          */
@@ -484,6 +489,7 @@ declare namespace FudgeStory {
          */
         static deserialize(_serialization: ƒ.Serialization[]): void;
         private static setup;
+        get audio(): ƒ.ComponentAudio;
     }
 }
 declare namespace FudgeStory {

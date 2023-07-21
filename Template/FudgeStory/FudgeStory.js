@@ -17,6 +17,9 @@ var FudgeStory;
         static getGraph() {
             return Base.graph;
         }
+        static getViewport() {
+            return Base.viewport;
+        }
         /**
          * Will be called once by {@link Progress} before anything else may happen.
          */
@@ -352,13 +355,13 @@ var FudgeStory;
      * The parameters define the duration of the blend, the grayscale image for special effects and the edges (smooth 0 - 2 sharp)
      */
     async function update(_duration, _url, _edge) {
-        let viewport = Reflect.get(FudgeStory.Base, "viewport");
-        viewport.adjustingFrames = false;
+        let viewport = FudgeStory.Base.getViewport();
         if (!_duration) {
             viewport.draw();
             return;
         }
-        let crc2 = viewport.getContext();
+        viewport.adjustingFrames = false;
+        let crc2 = viewport.context;
         let imgOld = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
         viewport.draw();
         let imgNew = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
@@ -367,6 +370,7 @@ var FudgeStory;
         if (_url)
             transition = await FudgeStory.Transition.get(_url);
         await FudgeStory.Transition.blend(imgOld, imgNew, _duration * 1000, transition, _edge);
+        viewport.adjustingFrames = true;
     }
     FudgeStory.update = update;
     /**
@@ -424,6 +428,14 @@ var FudgeStory;
         return position;
     }
     FudgeStory.positionPercent = positionPercent;
+    function pointCanvasToMiddleGround(_point) {
+        // let point: ƒ.Vector2 = Base.getViewport().poi
+        let ray = FudgeStory.Base.getViewport().getRayFromClient(_point);
+        let middle = Reflect.get(FudgeStory.Base, "middle");
+        let result = ray.intersectPlane(middle.mtxWorld.translation, ƒ.Vector3.Z());
+        return result;
+    }
+    FudgeStory.pointCanvasToMiddleGround = pointCanvasToMiddleGround;
 })(FudgeStory || (FudgeStory = {}));
 var FudgeStory;
 (function (FudgeStory) {
@@ -737,6 +749,15 @@ var FudgeStory;
                 return Progress.bundlePromises(_promiseFactoriesOrEventTypes);
             };
         }
+        static createEventPromise(_target, _eventType) {
+            return new Promise((resolve) => {
+                let hndEvent = function (_event) {
+                    _target.removeEventListener(_eventType, hndEvent);
+                    resolve(_event);
+                };
+                _target.addEventListener(_eventType, hndEvent);
+            });
+        }
         /**
          * Wait for the given amount of time in seconds to pass
          */
@@ -828,6 +849,15 @@ var FudgeStory;
             this.loop = _loop;
             Sound.sounds.set(_url, this);
         }
+        static getSound(_url) {
+            let sound = Sound.sounds.get(_url);
+            if (!sound)
+                return false;
+            return sound.cmpAudio.isPlaying;
+        }
+        static isPlaying(_url) {
+            return Sound.sounds.get(_url);
+        }
         /**
          * Plays the audiofile defined by the given url with the given volume and loops it, if desired
          */
@@ -904,6 +934,9 @@ var FudgeStory;
             let nodeSound = new ƒ.Node("Sound");
             ƒ.AudioManager.default.listenTo(nodeSound);
             return nodeSound;
+        }
+        get audio() {
+            return this.cmpAudio;
         }
     }
     FudgeStory.Sound = Sound;
@@ -1125,7 +1158,7 @@ var FudgeStory;
          * Called by {@link update} to blend from the old display of a scene to the new. Don't call directly.
          */
         static async blend(_imgOld, _imgNew, _duration = 1000, _transition, _factor = 0.5) {
-            let crc2 = FudgeStory.Base.viewport.getContext();
+            let crc2 = FudgeStory.Base.viewport.context;
             let bmpNew = await createImageBitmap(_imgNew);
             if (!_transition) {
                 function simpleFade(_progress) {
@@ -1161,8 +1194,8 @@ var FudgeStory;
             await txtTransition.load(_url);
             // TODO: move to get(...)
             let canvasTransition = document.createElement("canvas");
-            canvasTransition.width = FudgeStory.Base.viewport.getCanvas().width;
-            canvasTransition.height = FudgeStory.Base.viewport.getCanvas().height;
+            canvasTransition.width = FudgeStory.Base.viewport.canvas.width;
+            canvasTransition.height = FudgeStory.Base.viewport.canvas.height;
             let crcTransition = canvasTransition.getContext("2d");
             crcTransition.imageSmoothingEnabled = false;
             crcTransition.drawImage(txtTransition.image, 0, 0, txtTransition.image.width, txtTransition.image.height, 0, 0, canvasTransition.width, canvasTransition.height);
