@@ -88,7 +88,7 @@ var Endabgabe;
     function slideInAnimation() {
         return {
             start: { translation: Endabgabe.fS.positions.bottomright },
-            end: { translation: Endabgabe.fS.positions.bottomleft },
+            end: { translation: Endabgabe.fS.positions.bottomcenter },
             duration: 1,
             playmode: Endabgabe.fS.ANIMATION_PLAYMODE.PLAYONCE
         };
@@ -96,7 +96,7 @@ var Endabgabe;
     Endabgabe.slideInAnimation = slideInAnimation;
     function slideOutAnimation() {
         return {
-            start: { translation: Endabgabe.fS.positions.bottomleft },
+            start: { translation: Endabgabe.fS.positions.bottomcenter },
             end: { translation: Endabgabe.fS.positions.bottomright },
             duration: 1,
             playmode: Endabgabe.fS.ANIMATION_PLAYMODE.PLAYONCE
@@ -119,7 +119,7 @@ var Endabgabe;
         let text = {
             Narrator: {
                 // MIT ENTERHAKEN  
-                T0000: "Alter war das ein steiler Berg.",
+                T0000: "Das war gerade echt schwer hier hoch zu kommen.",
                 T0001: "Zum glück hatte ich den Enterhaken dabei.",
                 // MIT STEINSCHLEUDER
                 T0002: "Das waren aber viele Treppen. Jetzt bin ich echt erschöpft.",
@@ -367,7 +367,7 @@ var Endabgabe;
             RockLee: {
                 T0000: "Ich bin Rock Lee und du wirst mich auf einer wichtigen Mission begleiten.",
                 T0001: "Unter mir liegt einer der unberührtesten und gefährlichsten Dschungel der Welt.",
-                T0002: "Eine Ärztin ist bei der Lieferung von Medikamenten an ein abgelegenes Dorf verschollen. Es its unsere Aufgabe, diese Ärztin zu finden und die Medikamente in das Dorf zu bringen.",
+                T0002: "Eine Ärztin ist bei der Lieferung von Medikamenten an ein abgelegenes Dorf verschollen. Es ist unsere Aufgabe, diese Ärztin zu finden und die Medikamente in das Dorf zu bringen.",
                 T0003: "Die letzte bekannte Position der Ärztin liegt etwa 50 Kilometer nördlich, Tief im Herzen dieses Dschungels.",
                 T0004: "Vor uns liegen gefährliche Flüsse mit Strömungen und massive Felsschluchten aus Vulkangestein. Es gibt sogar Geschichten über eine verlassene Ruine irgendwo da draußen, tief in diesem Dschungel.",
                 T0005: "Vergiss nicht, auf dieser Mission hast du das Kommando. Und es ist bereits Zeit für deine erste Entscheidung, bist du bereit?",
@@ -375,13 +375,13 @@ var Endabgabe;
             },
             Narrator: {
                 T0000: "Ich kann noch einen weiteren Gegenstand in meinen Rucksack packen.",
-                T0001: "Entweder eine Machete oder eine Steinschleuder.",
+                T0001: "Entweder einen Enterhaken oder eine Steinschleuder.",
                 T0002: "Was nehm ich mit?"
             }
         };
         await Endabgabe.fS.Location.show(Endabgabe.location.Flugzeug);
         console.log("Location shown");
-        await Endabgabe.fS.Character.show(Endabgabe.characters.RockLee, Endabgabe.characters.RockLee.pose.neutral, Endabgabe.fS.positions.bottomcenter);
+        await Endabgabe.fS.Character.show(Endabgabe.characters.RockLee, Endabgabe.characters.RockLee.pose.neutral, Endabgabe.fS.positions.bottomright);
         await Endabgabe.fS.Character.animate(Endabgabe.characters.RockLee, Endabgabe.characters.RockLee.pose.neutral, Endabgabe.slideInAnimation());
         console.log("Character shown");
         await Endabgabe.fS.update(2);
@@ -420,8 +420,8 @@ var Endabgabe;
         await Endabgabe.fS.Speech.tell(Endabgabe.characters.Narrator, text.Narrator.T0002);
         await Endabgabe.fS.update();
         let chooseItem = {
-            C0001: "Enterhaken",
-            C0002: "Steinschleuder"
+            C0001: "Den Enterhaken mitnehmen",
+            C0002: "Die Steinschleuder mitnehmen"
         };
         let userInput = await Endabgabe.fS.Menu.getInput(chooseItem, "selectBtn");
         switch (userInput) {
@@ -461,7 +461,7 @@ var Endabgabe;
             Narrator: {
                 T0000: "Jetzt bin ich also alleine hier.",
                 T0001: "Wohin geh ich denn nun?",
-                T0002: "Folg ich den <span style='color:yellow'>Feldweg</span> oder laufe ich <span style='color:green'>durch den Dschungel</span>?",
+                T0002: "Folg ich dem <span style='color:yellow'>Feldweg</span> oder laufe ich <span style='color:green'>durch den Dschungel</span>?",
                 T0003: "Ah warte, ich hab doch die Steinschleuder!",
                 T0004: "Da ist ja eine Treppe die den Berg hoch führt.",
                 T0005: "Oh warte da ist ja sogar eine Höhle neben der Treppe, die sieht auch ziemlich interessant aus. Wo soll ich hin?",
