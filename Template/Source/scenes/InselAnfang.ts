@@ -4,7 +4,7 @@ namespace Endabgabe {
             Narrator: {
               T0000: "Jetzt bin ich also alleine hier.",
               T0001: "Wohin geh ich denn nun?",
-              T0002: "Folg ich den <span style='color:yellow'>Feldweg</span> oder laufe ich <span style='color:green'>durch den Dschungel</span>?",
+              T0002: "Folg ich dem <span style='color:yellow'>Feldweg</span> oder laufe ich <span style='color:green'>durch den Dschungel</span>?",
               T0003: "Ah warte, ich hab doch die Steinschleuder!",
               T0004: "Da ist ja eine Treppe die den Berg hoch führt.",
               T0005: "Oh warte da ist ja sogar eine Höhle neben der Treppe, die sieht auch ziemlich interessant aus. Wo soll ich hin?",

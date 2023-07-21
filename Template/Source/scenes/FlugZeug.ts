@@ -21,7 +21,7 @@ namespace Endabgabe {
       },
       Narrator: {
         T0000: "Ich kann noch einen weiteren Gegenstand in meinen Rucksack packen.",
-        T0001: "Entweder eine Machete oder eine Steinschleuder.",
+        T0001: "Entweder einen Enterhaken oder eine Steinschleuder.",
         T0002: "Was nehm ich mit?"
       }
     };
@@ -70,8 +70,8 @@ namespace Endabgabe {
     await fS.update();
     
     let chooseItem = {
-      C0001: "Enterhaken",
-      C0002: "Steinschleuder"
+      C0001: "Den Enterhaken mitnehmen",
+      C0002: "Die Steinschleuder mitnehmen"
     }
 
     let userInput = await fS.Menu.getInput(chooseItem, "selectBtn");
