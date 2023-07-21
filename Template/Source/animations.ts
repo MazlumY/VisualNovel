@@ -2,7 +2,7 @@ namespace Endabgabe {
     export function slideInAnimation(): fS.AnimationDefinition {
         return {
             start: { translation: fS.positions.bottomright},
-            end: { translation: fS.positions.bottomleft},
+            end: { translation: fS.positions.bottomcenter},
             duration: 1,
             playmode: fS.ANIMATION_PLAYMODE.PLAYONCE
         }
@@ -10,7 +10,7 @@ namespace Endabgabe {
 
     export function slideOutAnimation(): fS.AnimationDefinition {
         return {
-            start: { translation: fS.positions.bottomleft},
+            start: { translation: fS.positions.bottomcenter},
             end: { translation: fS.positions.bottomright},
             duration: 1,
             playmode: fS.ANIMATION_PLAYMODE.PLAYONCE
