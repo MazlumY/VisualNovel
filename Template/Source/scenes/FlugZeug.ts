@@ -29,6 +29,7 @@ namespace Endabgabe {
     await fS.Location.show(location.Flugzeug);
     console.log("Location shown");
 
+    await fS.Character.show(characters.RockLee, characters.RockLee.pose.neutral, fS.positions.bottomright)
     await fS.Character.animate(characters.RockLee, characters.RockLee.pose.neutral, slideInAnimation());
     console.log("Character shown");
     await fS.update(2);
