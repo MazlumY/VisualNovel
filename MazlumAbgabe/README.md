@@ -9,4 +9,4 @@ In "Save the Village" begleitest du den Survival-Experten Rock Lee auf einer leb
 
 **Konzept** https://github.com/MazlumY/VisualNovel/blob/main/MazlumAbgabe/Konzept/VisuelNovelKonzept.pdf
 
-**Zip-File** https://mazlumy.github.io/VisualNovel/MazlumAbgabe/Zip-File/MazlumAbgabe.zip
+**Zip-File** https://github.com/MazlumY/VisualNovel/tree/main/MazlumAbgabe/Zip-File
