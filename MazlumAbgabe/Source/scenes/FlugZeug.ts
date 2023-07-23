@@ -20,7 +20,7 @@ namespace Endabgabe {
         T0003: "Die letzte bekannte Position der Ärztin liegt etwa 50 Kilometer nördlich, Tief im Herzen dieses Dschungels.",
         T0004: "Vor uns liegen gefährliche Flüsse mit Strömungen und massive Felsschluchten aus Vulkangestein. Es gibt sogar Geschichten über eine verlassene Ruine irgendwo da draußen, tief in diesem Dschungel.",
         T0005: "Vergiss nicht, auf dieser Mission hast du das Kommando. Und es ist bereits Zeit für deine erste Entscheidung, bist du bereit?",
-        T0006: "Hey du! Du bist eine Legende!"
+        T0006: "Hey du! Du bist ein wahrer Held!"
       },
       Narrator: {
         T0000: "Ich kann noch einen weiteren Gegenstand in meinen Rucksack packen.",

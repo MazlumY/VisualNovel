@@ -8,7 +8,7 @@ namespace Endabgabe {
               T0003: "Oh nein! Zum glück habe ich ja die Steinschleuder mit genommen.",
               T0004: "Da ist ja eine Treppe die den Berg hoch führt.",
               T0005: "Oh warte da ist ja sogar eine Höhle neben der Treppe, die sieht auch ziemlich interessant aus. Wo soll ich hin?",
-              T0006: "Oh scheiße! Ist das ein Tiger? NEIN!!!"
+              T0006: "Oh MIst! Ist das ein Tiger? NEIN!!!"
             },
             UrEinWohner: {
                 T0000: "<span style='color: red;'>Hey! Was machst du hier? Das ist unsere Insel!</span>"
